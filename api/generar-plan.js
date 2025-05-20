@@ -4,9 +4,21 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
 
+export const config = {
+  api: {
+    bodyParser: false
+  }
+};
+
 export default async function handler(req, res) {
   try {
-    const { prompt } = req.body;
+    // 🔧 Leer el body manualmente
+    const buffers = [];
+    for await (const chunk of req) {
+      buffers.push(chunk);
+    }
+    const data = JSON.parse(Buffer.concat(buffers).toString());
+    const prompt = data.prompt;
 
     if (!prompt) {
       console.error("❌ Prompt no recibido");
@@ -37,4 +49,3 @@ export default async function handler(req, res) {
     res.status(500).json({ error: error.message || "Fallo la generación con OpenAI" });
   }
 }
-
