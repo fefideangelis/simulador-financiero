@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulador Financiero con IA</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Simulador Financiero</h2>
+
+  <form id="simulador-form">
+    <label>Ingresos mensuales ($):</label>
+    <input type="number" id="ingresos" required>
+
+    <label>Objetivo:</label>
+    <input type="text" id="objetivo" required>
+
+    <label>Dinero necesario ($):</label>
+    <input type="number" id="montoObjetivo" required>
+
+    <label>¿En cuántos meses querés lograrlo?</label>
+    <input type="number" id="meses" required>
+
+    <button type="submit">Calcular con IA</button>
+  </form>
+
+  <div id="resultado">Resultado...</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
